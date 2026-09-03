@@ -14,18 +14,25 @@ import { FaceSnapC } from './face-snap/face-snap-C';
   styleUrl: './app.scss', // path vers le fichier de style
   templateUrl: './app.html',// path vers le fichier html
 })
-export class App implements OnInit{
-  
-  mySnap!: FaceSnap;
-  myOtherSnap!: FaceSnap;
-  myLastSanp!: FaceSnap;
+export class App implements OnInit {
+
+  faceSnaps!: FaceSnap[];
 
   ngOnInit(): void {
 
-    this.mySnap =  new FaceSnap("Tixie", "Ma chiasse d'amour",'https://cdn.pixabay.com/photo/2015/05/31/16/03/teddy-bear-792273_1280.jpg', new Date(), 100 );
+    this.faceSnaps = [
 
-    this.myOtherSnap = new FaceSnap("Symba", "Mon gros patapouf d'amour",'https://cdn.pixabay.com/photo/2015/05/31/16/03/teddy-bear-792273_1280.jpg', new Date(), 130 );
+      new FaceSnap("Tixie", "Ma chiasse d'amour", 'https://cdn.pixabay.com/photo/2015/05/31/16/03/teddy-bear-792273_1280.jpg', new Date(), 10),
 
-    this.myLastSanp = new FaceSnap("Pasha", "Mon gros pasha d'amour",'https://cdn.pixabay.com/photo/2015/05/31/16/03/teddy-bear-792273_1280.jpg', new Date(), 130 );
+      new FaceSnap("Symba", "Mon gros patapouf d'amour", 'https://cdn.pixabay.com/photo/2015/05/31/16/03/teddy-bear-792273_1280.jpg', new Date(), 130),
+
+      new FaceSnap("Pasha", "Mon gros pasha d'amour", 'https://cdn.pixabay.com/photo/2015/05/31/16/03/teddy-bear-792273_1280.jpg', new Date(), 800)
+    ]
+
+
+    this.faceSnaps[1].setLocation("avec le symba");
   }
+
+
+
 }

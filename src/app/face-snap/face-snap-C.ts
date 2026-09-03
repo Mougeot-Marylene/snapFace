@@ -1,9 +1,10 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FaceSnap } from '../models/face-snap';
+import { NgClass, NgStyle } from '@angular/common';
 
 
 @Component({
-  imports: [],
+  imports: [NgStyle, NgClass], //directive[ngStyle], Une directive, c'est une classe qui ajoute du comportement aux éléments de vos applications Angular. 
   selector: 'app-face-snap',
   styleUrl: './face-snap.scss',
   templateUrl: './face-snap.html',
