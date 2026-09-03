@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FaceSnap } from '../models/face-snap';
 import { CurrencyPipe, DatePipe, DecimalPipe, LowerCasePipe, NgClass, NgStyle, PercentPipe, TitleCasePipe, UpperCasePipe } from '@angular/common';
+import { FaceSnapService } from '../services/face-snaps.service';
 
 
 @Component({
@@ -16,9 +17,10 @@ export class FaceSnapC implements OnInit {
   // Déclaration des propriétés
   snapButtonText!: String; // Détermine le texte affiché sur le bouton  
   userHasSnapped!: boolean; //  sert à savoir si l'utilisateur a déjà cliqué sur le bouton "Snap".
-  myLargeNumber: number = 4667916.76;
-  myPourcentage: number = 0.3367;
-  myPrixe: number = 336.75;
+
+
+  constructor(private faceSnapService: FaceSnapService){ }
+
 
   /* on assigne les valeurs des propriétés (initialiser) grâce à l'implementation de l'interface OnInit
       ngOnInit est une methode sur les components qui est executée 1 fois pour chaque instance au moment de la création de cette instance
@@ -30,9 +32,6 @@ export class FaceSnapC implements OnInit {
   }
 
 
-  /* 
-      norme de nomenclature : quand on réagit à un évènement venant du DOM, on démare la methode en commancant par on
-  */
   onSnap(): void {
     // si la personne à déjà liker et clique sur le bouton
     if (this.userHasSnapped) {
@@ -45,7 +44,8 @@ export class FaceSnapC implements OnInit {
 
   //annuler son Snap(like) / retirer son like
   UnSnap() {
-    this.faceSnap.removeSnap();
+    
+   this.faceSnapService.snapFaceSnapById(this.faceSnap.id, 'unsnap');
     this.snapButtonText = "Like";
     this.userHasSnapped = false;
   }
@@ -53,8 +53,8 @@ export class FaceSnapC implements OnInit {
 
   //Methode qui ajoute des likes
   snap() {
-    this.faceSnap.addSnap();
-    this.snapButtonText = "Vous avez déjà aimé";
+   this.faceSnapService.snapFaceSnapById(this.faceSnap.id, 'snap');
+    this.snapButtonText = "Vous aimé";
     this.userHasSnapped = true;
   }
 

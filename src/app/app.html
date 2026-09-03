@@ -1,6 +1,5 @@
-<!-- utillisation du selecteur du component  | attribut binding : attribut binding pour lier cet objet à la propriété personnalisée ([faceSnap]="mySnap") -->
-<!--  le paramatètre track permet à angular d'identifier les différentes éléments à l'interieur de notre tableau -->
-@for (item of faceSnaps; track item) {
-<app-face-snap [faceSnap]="item" />
-<tr></tr>
-}
+<!-- header de l'application -->
+ <app-header />
+
+<!-- affichage du component app-face-snap-list -->
+<router-outlet></router-outlet>
