@@ -1,10 +1,10 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FaceSnap } from '../models/face-snap';
-import { NgClass, NgStyle } from '@angular/common';
+import { CurrencyPipe, DatePipe, DecimalPipe, LowerCasePipe, NgClass, NgStyle, PercentPipe, TitleCasePipe, UpperCasePipe } from '@angular/common';
 
 
 @Component({
-  imports: [NgStyle, NgClass], //directive[ngStyle], Une directive, c'est une classe qui ajoute du comportement aux éléments de vos applications Angular. 
+  imports: [NgStyle, NgClass, UpperCasePipe, LowerCasePipe, TitleCasePipe, DatePipe, DecimalPipe, PercentPipe, CurrencyPipe], //directive[ngStyle], Une directive, c'est une classe qui ajoute du comportement aux éléments de vos applications Angular. 
   selector: 'app-face-snap',
   styleUrl: './face-snap.scss',
   templateUrl: './face-snap.html',
@@ -16,7 +16,9 @@ export class FaceSnapC implements OnInit {
   // Déclaration des propriétés
   snapButtonText!: String; // Détermine le texte affiché sur le bouton  
   userHasSnapped!: boolean; //  sert à savoir si l'utilisateur a déjà cliqué sur le bouton "Snap".
-
+  myLargeNumber: number = 4667916.76;
+  myPourcentage: number = 0.3367;
+  myPrixe: number = 336.75;
 
   /* on assigne les valeurs des propriétés (initialiser) grâce à l'implementation de l'interface OnInit
       ngOnInit est une methode sur les components qui est executée 1 fois pour chaque instance au moment de la création de cette instance
@@ -50,10 +52,10 @@ export class FaceSnapC implements OnInit {
 
 
   //Methode qui ajoute des likes
-  snap(){
-     this.faceSnap.addSnap();
-      this.snapButtonText = "Vous avez déjà aimé";
-      this.userHasSnapped = true;
+  snap() {
+    this.faceSnap.addSnap();
+    this.snapButtonText = "Vous avez déjà aimé";
+    this.userHasSnapped = true;
   }
 
 }
